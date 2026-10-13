@@ -1,7 +1,6 @@
-# 17_BITREV/c_baseline/ — CP1 C 參考實作
+# CP1 — BITREV C baseline（繳交成品）
 
-對應 Checkpoint：**CP1**
-內容：C 參考實作（原始碼、與 spec 一致的參考函式）
+CP1 檢查點「C 參考實作」的最終成品，集中於此資料夾。
 
 ## 檔案與分工
 
@@ -31,11 +30,15 @@ make clean   # 清除執行檔
 ## 驗證結果
 
 目前共有 11 組測資，涵蓋零值、全一、最低/最高位元、左右 16-bit
-對調、交錯 byte、對稱圖樣與隨機值。三者一致：
+對調、交錯 byte、對稱圖樣與隨機值。三者一致的結果為：
 
 ```text
 BITREV CP1 test suite (11 vectors)
 11/11 passed, 0 failed
 ```
+
+## 報告
+
+- CP1 完整報告：`report/CP1.md`（D，1114405012）
 
 > CP2 的 RISC-V 編譯（`riscv64-elf-gcc -S -march=rv32im -mabi=ilp32`）留待下一階段。
