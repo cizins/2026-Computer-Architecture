@@ -25,25 +25,24 @@ group17_BITREV/
 ├── instructions/
 │   ├── README.md
 │   └── BITREV/
-│       ├── README.md              # 指令語意與目錄說明
-│       ├── c_baseline/            # CP1：C 參考實作、測資、測試、Makefile
-│       ├── rv32im/                # CP2：RV32IM 組合語言與指令統計
-│       ├── spec/                  # CP3：語意規格、虛擬碼、編碼範例
-│       ├── tests/                 # 測資與預期輸出
-│       └── references/            # 參考資料
-└── report/
+│       └── README.md              # 指令語意與說明
+├── report/
+│   ├── README.md
+│   ├── CP1.md  CP2.md  CP3.md     # 各 Checkpoint 報告（六段式）
+│   └── figures/                   # 報告用圖表
+└── src/
     ├── README.md
-    ├── CP1.md  CP2.md  CP3.md     # 各 Checkpoint 報告（六段式）
-    └── figures/                   # 報告用圖表
+    ├── c_baseline/                # CP1：C 參考實作、測資、測試、Makefile
+    └── rv32im/                    # CP2：RV32IM 組合語言與指令統計
 ```
 
 ## CP ↔ 目錄 對照（PR 分界）
 
 | CP | 產物路徑（皆在 `group17_BITREV/` 下） | 對應 tag |
 |---|---|---|
-| **CP1** C baseline | `instructions/BITREV/c_baseline/` + `report/CP1.md` | `cp1-submit` |
-| **CP2** RV32IM 實作 | `instructions/BITREV/rv32im/` + `report/CP2.md` | `cp2-submit` |
-| **CP3** 指令規格與編碼 | `instructions/BITREV/spec/`、`tests/`、`references/` + `report/CP3.md` | `cp3-submit` |
+| **CP1** C baseline | `src/c_baseline/` + `report/CP1.md` | `cp1-submit` |
+| **CP2** RV32IM 實作 | `src/rv32im/` + `report/CP2.md` | `cp2-submit` |
+| **CP3** 指令規格與編碼 | `report/CP3.md`（語意規格、編碼、比較） | `cp3-submit` |
 
 ## 繳交流程
 
@@ -56,7 +55,7 @@ group17_BITREV/
 
 | 路徑 | 內容 |
 |---|---|
-| `instructions/BITREV/README.md` | BITREV 語意與目錄說明 |
-| `instructions/BITREV/c_baseline/README.md` | CP1 成品說明與使用方式 |
+| `instructions/BITREV/README.md` | BITREV 語意與說明 |
+| `src/c_baseline/README.md` | CP1 成品說明與使用方式 |
 | `report/CP1.md`、`CP2.md`、`CP3.md` | 各 Checkpoint 報告 |
 | `CONTRIBUTIONS.md` | 個人貢獻聲明（每人至少 15%，加總 100%） |

@@ -9,7 +9,7 @@
 ## 2. 設計內容
 
 （待補：RV32IM 組合語言設計，僅允許 RV32IM；對應程式碼置於
-`../instructions/BITREV/rv32im/`。）
+`../src/rv32im/`。）
 
 ## 3. 結果與分析
 

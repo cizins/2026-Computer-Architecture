@@ -16,11 +16,10 @@ rd[i] = rs1[31 - i],  i = 0 … 31
 | 路徑 | 內容 |
 |---|---|
 | `README.md` | 本檔 |
-| `c_baseline/` | CP1 C baseline：核心函式、測資、測試、Makefile |
-| `rv32im/` | CP2 RV32IM 組合語言與指令統計 |
-| `spec/`、`tests/`、`references/` | CP3 語意規格、測資、參考資料 |
-| `../../CONTRIBUTIONS.md` | 個人貢獻聲明 |
+| `../../src/c_baseline/` | CP1 C baseline：核心函式、測資、測試、Makefile |
+| `../../src/rv32im/` | CP2 RV32IM 組合語言與指令統計 |
 | `../../report/` | CP1/CP2/CP3 報告（六段式） |
+| `../../CONTRIBUTIONS.md` | 個人貢獻聲明 |
 
 ## CP1 重點
 
@@ -31,7 +30,7 @@ rd[i] = rs1[31 - i],  i = 0 … 31
 ## 使用方式
 
 ```sh
-cd c_baseline
+cd ../../src/c_baseline
 make run     # 編譯並執行全部測資
 make clean   # 清除執行檔
 ```
