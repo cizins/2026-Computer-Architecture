@@ -39,6 +39,6 @@ BITREV CP1 test suite (11 vectors)
 
 ## 報告
 
-- CP1 完整報告：`../../../report/CP1.md`（D，1114405012）
+- CP1 完整報告：`../../report/CP1.md`（D，1114405012）
 
 > CP2 的 RISC-V 編譯（`riscv64-elf-gcc -S -march=rv32im -mabi=ilp32`）留待下一階段。
