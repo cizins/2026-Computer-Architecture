@@ -42,7 +42,7 @@
 
 ```sh
 riscv64-elf-gcc -march=rv32im -mabi=ilp32 \
-  -c group17_BITREV/src/rv32im/bitrev.S -o /tmp/group17-bitrev.o
+  -c /tmp/group17-bitrev.S -o /tmp/group17-bitrev.o
 riscv64-elf-objdump -d --start-address=0x4 --stop-address=0x94 \
   /tmp/group17-bitrev.o
 ```
