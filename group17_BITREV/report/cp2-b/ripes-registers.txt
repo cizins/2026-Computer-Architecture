@@ -35,4 +35,4 @@ x31:	252645135	(0x0f0f0f0f)
 ===== simulation information (processor configuration, input file, ...)
 ISA extensions: M
 processor: RV32_5S
-source file: C:\Users\spide\OneDrive\桌面\Aug的課\RISC V Leader\2026-Computer-Architecture\group17_BITREV\src\rv32im\bitrev.S
+source file: group17_BITREV/src/rv32im/bitrev.S

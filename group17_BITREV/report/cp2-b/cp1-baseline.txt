@@ -1,4 +1,8 @@
 gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+Copyright (C) 2025 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
 BITREV CP1 test suite (11 vectors)
 #    input        expected     actual       naive  result
 1    0x00000001   0x80000000   0x80000000   0x80000000 PASS  boundary: LSB -> MSB

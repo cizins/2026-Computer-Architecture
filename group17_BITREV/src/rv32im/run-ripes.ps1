@@ -6,6 +6,14 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $utf8 = New-Object System.Text.UTF8Encoding($false)
+$repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../../..')).Path
+function Get-RepoRelativePath([string]$path) {
+    $prefix = $repo.TrimEnd('\', '/') + [IO.Path]::DirectorySeparatorChar
+    if (-not $path.StartsWith($prefix, [StringComparison]::OrdinalIgnoreCase)) {
+        throw 'Source and output must be inside the repository.'
+    }
+    return $path.Substring($prefix.Length).Replace('\', '/')
+}
 $exe = (Resolve-Path -LiteralPath $RipesPath).Path
 $source = (Resolve-Path -LiteralPath $SourcePath).Path
 $vectorsPath = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../c_baseline/test_vectors.h')).Path
@@ -14,12 +22,26 @@ $out = (Resolve-Path -LiteralPath $OutputDirectory).Path
 $stdout = Join-Path $out 'ripes-stdout.txt'
 $stderr = Join-Path $out 'ripes-stderr.txt'
 $report = Join-Path $out 'ripes-registers.txt'
+$relativeSource = Get-RepoRelativePath $source
+$relativeReport = Get-RepoRelativePath $report
 # Start-Process needs explicit quoting for paths containing spaces.
 if ($source.Contains('"') -or $report.Contains('"')) { throw 'Unsupported quote in path.' }
-$arguments = '--mode cli --src "' + $source + '" -t asm --proc RV32_5S --isaexts M --timeout 30000 --regs --runinfo --output "' + $report + '"'
-$command = '"' + $exe + '" ' + $arguments
+$arguments = '--mode cli --src "' + $relativeSource + '" -t asm --proc RV32_5S --isaexts M --timeout 30000 --regs --runinfo --output "' + $relativeReport + '"'
+$command = 'Ripes.exe ' + $arguments
 [IO.File]::WriteAllText((Join-Path $out 'command.txt'), $command + [Environment]::NewLine, $utf8)
-$process = Start-Process -FilePath $exe -ArgumentList $arguments -Wait -PassThru -WindowStyle Hidden -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+$sourceHash = (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant()
+$process = Start-Process -FilePath $exe -ArgumentList $arguments -WorkingDirectory $repo -Wait -PassThru -WindowStyle Hidden -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+if ((Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash.ToLowerInvariant() -ne $sourceHash) { throw 'Source changed during simulation.' }
+# Normalize telemetry paths and trailing blank lines without changing register data.
+foreach ($log in @($stdout, $stderr, $report)) {
+    if (Test-Path -LiteralPath $log) {
+        $content = [IO.File]::ReadAllText($log, $utf8).Replace($source, $relativeSource)
+        $content = $content.Replace($repo.Replace('\', '/') + '/', '').Replace($repo + '\', '')
+        $content = $content.Replace("`r`n", "`n").TrimEnd("`r", "`n")
+        if ($content.Length -gt 0) { $content += "`n" }
+        [IO.File]::WriteAllText($log, $content, $utf8)
+    }
+}
 $text = [IO.File]::ReadAllText($stdout, $utf8)
 Write-Output $text
 if ($process.ExitCode -ne 0) { throw "Ripes exit code: $($process.ExitCode). See $stderr" }
@@ -46,7 +68,7 @@ foreach ($check in @(@(18, 11), @(19, 11), @(20, 0))) {
 $manifest = [ordered]@{
     executed_at = (Get-Date).ToString('o')
     processor = 'RV32_5S'; isa_extensions = 'M'; ripes_exit_code = $process.ExitCode
-    source_sha256 = (Get-FileHash -LiteralPath $source -Algorithm SHA256).Hash
+    source_sha256 = $sourceHash
     vectors_sha256 = (Get-FileHash -LiteralPath $vectorsPath -Algorithm SHA256).Hash
     ripes_exe_sha256 = (Get-FileHash -LiteralPath $exe -Algorithm SHA256).Hash
     vector_count = $rows.Count; passed = 11; failed = 0; command = $command
