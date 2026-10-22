@@ -52,12 +52,13 @@ riscv64-elf-objdump -d --start-address=0x4 --stop-address=0x94 \
 - Ripes `v2.2.6-106-g5b8a616`（macOS universal2）
 - 處理器：`RV32_5S`；ISA 擴充：`M`
 
-此 C-only 分支不重複納入任務 A 的 `bitrev.S`。測試來源為任務 A 的固定 commit
-`4b4d4390eae81aeb9c473416e5a42bff2bfbc5a1`，先下載到暫存位置：
+此 C-only 分支不重複納入任務 A 的 `bitrev.S`。測試來源為 PR #9 的固定 commit
+`2c6a8d5faaf1c0668d2fb863faa0a63e00b788ae`（commit `2c6a8d5` 僅修正註解中的
+不配對括號，機器碼不變），先下載到暫存位置：
 
 ```sh
 curl -L \
-  https://raw.githubusercontent.com/cizins/2026-Computer-Architecture/4b4d4390eae81aeb9c473416e5a42bff2bfbc5a1/group17_BITREV/src/rv32im/bitrev.S \
+  https://raw.githubusercontent.com/faxyu729/2026-Computer-Architecture/2c6a8d5faaf1c0668d2fb863faa0a63e00b788ae/group17_BITREV/src/rv32im/bitrev.S \
   -o /tmp/group17-bitrev.S
 ```
 
