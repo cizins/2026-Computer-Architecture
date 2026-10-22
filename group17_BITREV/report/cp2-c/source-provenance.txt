@@ -1,0 +1,14 @@
+Ripes instruction-count run source provenance
+
+The C-only branch is based on origin/main and intentionally does not duplicate the
+assembly source owned by task A. The tested source was extracted from the local
+integration branch, which contains PR #4's assembly implementation:
+
+  git show cp2-integration-1114405012:group17_BITREV/src/rv32im/bitrev.S
+
+SHA-256:
+  5e9003ef7b39cb4396d3f73861f77d2fa0f175f6787cdcd12abca12cbcdb0bf7
+
+This matches the source SHA-256 in the CP2-B manifest. The Ripes v2.2.6-106-g5b8a616
+run used RV32_5S with M enabled and reported 11/11 PASS and 6487 instructions
+retired for the complete test harness.

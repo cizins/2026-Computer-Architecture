@@ -52,19 +52,29 @@ riscv64-elf-objdump -d --start-address=0x4 --stop-address=0x94 \
 - Ripes `v2.2.6-106-g5b8a616`（macOS universal2）
 - 處理器：`RV32_5S`；ISA 擴充：`M`
 
+此 C-only 分支不重複納入任務 A 的 `bitrev.S`。測試來源為任務 A 的固定 commit
+`4b4d4390eae81aeb9c473416e5a42bff2bfbc5a1`，先下載到暫存位置：
+
 ```sh
-"/Applications/Ripes-v2.2.6-106-g5b8a616-mac-universal2.app/Contents/MacOS/Ripes" \
-  --mode cli \
-  --src group17_BITREV/src/rv32im/bitrev.S \
-  -t asm --proc RV32_5S --isaexts M --timeout 30000 \
-  --iret --regs --runinfo \
-  --output group17_BITREV/report/cp2-b/ripes-instruction-count.txt
+curl -L \
+  https://raw.githubusercontent.com/cizins/2026-Computer-Architecture/4b4d4390eae81aeb9c473416e5a42bff2bfbc5a1/group17_BITREV/src/rv32im/bitrev.S \
+  -o /tmp/group17-bitrev.S
 ```
 
-Ripes 實際輸出 `instructions retired = 6487`，11 組測資全部 PASS。Ripes 的計數器／處理器資訊見 [`ripes-instruction-count.txt`](../../report/cp2-b/ripes-instruction-count.txt)，終端機逐筆測試輸出見 [`ripes-instruction-count-console.txt`](../../report/cp2-b/ripes-instruction-count-console.txt)；核心反組譯輸出見 [`instruction-count-objdump.txt`](instruction-count-objdump.txt)。逐筆輸入、預期與實際結果表見 [`test-results.md`](../../report/cp2-b/test-results.md)。
+以下命令執行測試並在終端機同時顯示逐筆結果和 Ripes 指令計數：
 
-終端機原始輸出以文字檔保存，未偽裝成 GUI 截圖。若組內要求一定要交 `report/figures/cp2_instr_count.png` 畫面截圖，仍需在本機終端機或 Ripes GUI 另外截取並放入該目錄。
+```sh
+Ripes \
+  --mode cli \
+  --src /tmp/group17-bitrev.S \
+  -t asm --proc RV32_5S --isaexts M --timeout 30000 \
+  --iret
+```
+
+Ripes 終端機應顯示 `PASSED=11 FAILED=0` 和 `instructions retired = 6487`。本次實際終端機截圖見 [`cp2_instr_count.png`](../../report/figures/cp2_instr_count.png)。Ripes 計數器、暫存器和處理器資訊另存於 [`ripes-instruction-count.txt`](../../report/cp2-c/ripes-instruction-count.txt)，逐筆測試輸出另存於 [`ripes-instruction-count-console.txt`](../../report/cp2-c/ripes-instruction-count-console.txt)。來源 SHA-256 與 CP2-B manifest 一致，見 [`source-provenance.txt`](../../report/cp2-c/source-provenance.txt)。核心反組譯輸出見 [`instruction-count-objdump.txt`](instruction-count-objdump.txt)。
+
+如需另存 Ripes 計數器輸出檔，可在命令中加入 `--regs --runinfo --output <輸出檔路徑>`；此時 Ripes 的計數器與處理器資訊會寫入該檔案。提交用截圖則使用上方未帶 `--output` 的命令，讓測試摘要和指令計數都顯示在同一個終端機畫面。
 
 ## 檔案對照
 
-任務卡三指定的產物位於 `group17_BITREV/src/rv32im/`（原始統計資料）及 `group17_BITREV/report/CP2.md`（統計表）。本統計原始說明與反組譯分別保存為 `instruction-count-results.md`、`instruction-count-objdump.txt`；CP2 報告第 3 節摘要同一組數據。
+任務卡三指定的統計表由負責 CP2 報告彙整的組員放入 `group17_BITREV/report/CP2.md`；本分支不修改該共用報告。統計方法與反組譯原始資料保存在 `group17_BITREV/src/rv32im/`，Ripes 計數器及逐筆測試終端輸出保存在 `group17_BITREV/report/cp2-c/`。
