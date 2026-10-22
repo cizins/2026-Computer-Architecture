@@ -1,0 +1,7 @@
+PR: https://github.com/faxyu729/2026-Computer-Architecture/pull/9
+Source commit: 2c6a8d5faaf1c0668d2fb863faa0a63e00b788ae
+Source path: group17_BITREV/src/rv32im/bitrev.S
+Source retrieved byte-for-byte via GitHub contents API.
+SHA-256: dc27dea24861427d422968f78f867ab9bd6e79b1fce8bea577405b8260062e96
+Note: commit 2c6a8d5 只將註解中的 1)/2) 改為 1./2.；機器碼不變，
+      Ripes v2.2.6 重跑仍為 11/11 PASS、6487 instructions retired。
