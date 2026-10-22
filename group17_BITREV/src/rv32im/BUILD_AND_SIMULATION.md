@@ -1,10 +1,10 @@
 # CP2-B — 編譯與模擬
 
-負責人：1114405041 A1SimpleSmile。實測日期：2026-10-22（Asia/Taipei）；本次重新取得 PR #9 的 LF 原始檔後重跑，精確時間見 manifest.json。2026-10-23 僅修正註解中的不配對括號，機器碼不變。
+負責人：1114405041 A1SimpleSmile。實測日期：2026-10-22（Asia/Taipei）；當時重新取得 PR #4 的 LF 原始檔後重跑，精確時間見 manifest.json。2026-10-23 PR #9 僅修正註解中的不配對括號（commit 2c6a8d5），機器碼不變，來源與 SHA-256 已同步更新。
 
 ## 工具與輸入
 
-本次來源為 PR #9 的固定 commit `2c6a8d5faaf1c0668d2fb863faa0a63e00b788ae`。
+目前來源為 PR #9 的固定 commit `2c6a8d5faaf1c0668d2fb863faa0a63e00b788ae`（原測試為 PR #4 的 `4b4d4390eae81aeb9c473416e5a42bff2bfbc5a1`；兩者機器碼相同）。
 取得時 PR 尚未合併；直接下載 GitHub 原始位元組，沒有將本機 CRLF 副本當成最終來源。
 原始檔 SHA-256 為 `dc27dea24861427d422968f78f867ab9bd6e79b1fce8bea577405b8260062e96`，
 與重跑後 manifest 一致。來源紀錄見 [source-provenance.txt](../../report/cp2-b/source-provenance.txt)。
