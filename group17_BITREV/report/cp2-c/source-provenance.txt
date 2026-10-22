@@ -1,0 +1,14 @@
+Ripes instruction-count run source provenance
+
+The C-only branch is based on origin/main and intentionally does not duplicate the
+assembly source owned by task A. The tested source is the bitrev.S from PR #9:
+
+  https://raw.githubusercontent.com/faxyu729/2026-Computer-Architecture/2c6a8d5faaf1c0668d2fb863faa0a63e00b788ae/group17_BITREV/src/rv32im/bitrev.S
+
+SHA-256:
+  dc27dea24861427d422968f78f867ab9bd6e79b1fce8bea577405b8260062e96
+
+This matches the source SHA-256 in the CP2-B manifest. Commit 2c6a8d5 only fixes
+comment parentheses; the machine code is unchanged. The Ripes v2.2.6-106-g5b8a616
+run used RV32_5S with M enabled and reported 11/11 PASS and 6487 instructions
+retired for the complete test harness.
