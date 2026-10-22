@@ -1,0 +1,10 @@
+Executed from Windows workspace:
+wsl -d Ubuntu --exec bash .cp2-tools/run-cp1.sh
+
+Shell script contents:
+#!/bin/sh
+set -eu
+cd CP2-B-delivery/group17_BITREV/src/c_baseline
+gcc --version | head -1
+gcc -Wall -Wextra -std=c11 bitrev.c test_bitrev.c -o ../../../../.cp2-tools/cp1_baseline
+../../../../.cp2-tools/cp1_baseline
