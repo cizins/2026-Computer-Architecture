@@ -13,7 +13,8 @@ CP2：以 RV32IM 組合語言實作 32-bit BITREV，並統計靜態／動態指�
 | `instruction-count-objdump.txt` | 核心反組譯（靜態指令數來源） |
 | `.gitattributes` | 強制 `bitrev.S` 使用 LF，避免換行造成 hash 不一致 |
 
-測試紀錄與截圖放在 [`../../report/cp2-b/`](../../report/cp2-b/) 與
+測試紀錄放在 [`../../report/cp2-b/`](../../report/cp2-b/)，統計輸出放在
+[`../../report/cp2-c/`](../../report/cp2-c/)，截圖放在
 [`../../report/figures/`](../../report/figures/)。
 
 ## 核心設計
