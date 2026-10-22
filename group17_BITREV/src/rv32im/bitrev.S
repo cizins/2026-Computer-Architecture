@@ -122,9 +122,9 @@ bitrev_step1:
 #     a7 = 10  exit           停止模擬器
 #
 # Ripes 組譯器/模擬器的兩個小限制 (本檔已避開):
-#   1) .string 內的 \n 不會被當跳脫字元, 會被組出 NUL(0x00) -> 換行改用
+#   1. .string 內的 \n 不會被當跳脫字元, 會被組出 NUL(0x00) -> 換行改用
 #      print_char(0x0A), 見 print_nl。
-#   2) print_string (a7=4) 會連字串結尾的 NUL 一起印出 -> 改用自寫的
+#   2. print_string (a7=4) 會連字串結尾的 NUL 一起印出 -> 改用自寫的
 #      print_str, 逐字元用 print_char 送出, 遇到 NUL 就停且不印。
 #
 # 測試結果同時寫入記憶體, 方便在 Ripes 的 Memory 視窗檢查:
