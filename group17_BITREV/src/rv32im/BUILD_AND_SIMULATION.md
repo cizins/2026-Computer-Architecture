@@ -1,18 +1,18 @@
 # CP2-B — 編譯與模擬
 
-負責人：1114405041 A1SimpleSmile。實測日期：2026-10-22（Asia/Taipei）；本次重新取得 PR #4 的 LF 原始檔後重跑，精確時間見 manifest.json。
+負責人：1114405041 A1SimpleSmile。實測日期：2026-10-22（Asia/Taipei）；本次重新取得 PR #9 的 LF 原始檔後重跑，精確時間見 manifest.json。2026-10-23 僅修正註解中的不配對括號，機器碼不變。
 
 ## 工具與輸入
 
-本次來源為 PR #4 的固定 commit `4b4d4390eae81aeb9c473416e5a42bff2bfbc5a1`。
+本次來源為 PR #9 的固定 commit `2c6a8d5faaf1c0668d2fb863faa0a63e00b788ae`。
 取得時 PR 尚未合併；直接下載 GitHub 原始位元組，沒有將本機 CRLF 副本當成最終來源。
-原始檔 SHA-256 為 `5e9003ef7b39cb4396d3f73861f77d2fa0f175f6787cdcd12abca12cbcdb0bf7`，
+原始檔 SHA-256 為 `dc27dea24861427d422968f78f867ab9bd6e79b1fce8bea577405b8260062e96`，
 與重跑後 manifest 一致。來源紀錄見 [source-provenance.txt](../../report/cp2-b/source-provenance.txt)。
 本目錄 `.gitattributes` 將 `bitrev.S` 指定為 LF，以避免 checkout 改變換行。
 
 - Ripes **v2.3.0**，Windows x86-64 可攜版；版本由 GUI「Help → Version」確認。
 - 處理器：**5-stage processor / RV32_5S**；ISA：**RV32IM**，啟用 M，未啟用 C。
-- `bitrev.S`：延續任務 A／PR #4 的原始程式，核心與測試 harness 均未修改。
+- `bitrev.S`：延續任務 A／PR #9 的程式；2026-10-23 僅修正註解中的 `1)`／`2)`，核心與測試 harness 的機器碼均未修改。
 - `../c_baseline/test_vectors.h`：CP1 的全部 11 組測資，含 0、全 1、LSB、MSB 四組邊界值。
 - 本流程直接使用 Ripes 內建組譯器組譯 `.S`，不需要先產生 ELF。
   另補 GNU RISC-V GCC 的交叉組譯驗證，指定
