@@ -9,10 +9,11 @@
 
 | 項目 | 內容 |
 |---|---|
-| 組名 | BITREV |
-| 組長 | Fan Xin-Yu（1114405020） |
-| 組員 | Fan Xin-Yu（1114405020）、Chen Jie-Xin（1114405042）、A1SimpleSmile（1114405041）、Allenyeh（1114405012） |
-| 分工分支 | `dev/1114405020`、`dev/1114405042`、`dev/1114405041`、`dev/1114405012` |
+| 題目 | BITREV |
+| 組名 | 一群瘋子 |
+| 組長 | 范芯瑜Fan Xin-Yu |
+| 組員 | 范芯瑜Fan Xin-Yu（1114405020）、陳絜歆Chen Jie-Xin（1114405042）、賴俋勳A1SimpleSmile（1114405041）、葉宥樑Allenyeh（1114405012） |
+| 分支 | `dev/1114405020`、`dev/1114405042`、`dev/1114405041`、`dev/1114405012` |
 
 個人貢獻聲明見 [CONTRIBUTIONS.md](CONTRIBUTIONS.md)。
 
