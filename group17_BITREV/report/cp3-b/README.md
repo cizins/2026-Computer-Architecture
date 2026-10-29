@@ -12,7 +12,8 @@
 | [`encoding.md`](./encoding.md) | R-type 欄位表、機器碼組譯公式、3 個範例（含 1 邊界值）詳細手算推導過程、二進位與暫存器數值前後變化 |
 | [`insn-test.S`](./insn-test.S) | RISC-V 組合語言 `.insn r` 組譯測試檔案（3 個 bitrev 範例指令） |
 | [`objdump.txt`](./objdump.txt) | GNU Binutils `objdump -d` 反組譯結果，驗證機器碼與 GNU as 組譯完全一致 |
-| [`../figures/cp3_encoding_fields.png`](../figures/cp3_encoding_fields.png) | 3 個範例的 32-bit 位元分佈與彩色欄位對照圖（依 RISC-V 規格書慣例 bit 31 在左、bit 0 在右） |
+| [`figures/cp3_encoding_fields.png`](../figures/cp3_encoding_fields.png) | 3 個範例的 32-bit 位元分佈與彩色欄位對照圖（依 RISC-V 規格書慣例 bit 31 在左、bit 0 在右） |
+| [`ai-usage.md`](./ai-usage.md) | 依課程 HOMEWORK §7 規範之 AI 使用紀錄與合規說明 |
 | [`README.md`](./README.md) | 本說明檔，摘要檔案架構、驗證結果與提供組員 D 整合 CP3.md 之段落 |
 
 ---
